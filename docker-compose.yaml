@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    container_name: myblog_c
+    ports:
+      - '5173:5173'
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1 
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true 
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
